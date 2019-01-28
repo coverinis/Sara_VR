@@ -899,7 +899,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 1d71b0b22d56fce44912696a006eda49, type: 3}
       propertyPath: m_Name
-      value: DB_Apps&Tech_04_13
+      value: Stove
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1d71b0b22d56fce44912696a006eda49, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2272,7 +2272,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100124, guid: 7328ac6808fde504b82a5cd4e416c526, type: 3}
       propertyPath: m_Name
-      value: table
+      value: Table & Chairs
       objectReference: {fileID: 0}
     - target: {fileID: 400124, guid: 7328ac6808fde504b82a5cd4e416c526, type: 3}
       propertyPath: m_LocalPosition.x
