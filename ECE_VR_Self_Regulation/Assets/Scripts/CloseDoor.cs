@@ -8,7 +8,10 @@ public class CloseDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        animator.SetTrigger("Close");
-        gameObject.SetActive(false);
+        if (other.tag.Equals("Player"))
+        {
+            animator.SetTrigger("Close");
+            gameObject.SetActive(false);
+        }
     }
 }
