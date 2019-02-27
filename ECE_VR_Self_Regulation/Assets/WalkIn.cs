@@ -6,9 +6,8 @@ public class WalkIn : MonoBehaviour
 {
     public GameObject mother;
     public GameObject molly;
-    public Vector2 moveTo;
-    public float speed;
-
+    public Vector2 move;
+    public float speed; 
 
     private Vector3 goalMother;
     private Vector3 goalMolly;
@@ -17,8 +16,8 @@ public class WalkIn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        goalMother = new Vector3(mother.transform.position.x + moveTo.x, mother.transform.position.y, mother.transform.position.z + moveTo.y);
-        goalMolly = new Vector3(molly.transform.position.x + moveTo.x, molly.transform.position.y, molly.transform.position.z + moveTo.y);
+        goalMother = new Vector3(mother.transform.position.x + move.x, mother.transform.position.y, mother.transform.position.z + move.y);
+        goalMolly = new Vector3(molly.transform.position.x + move.x, molly.transform.position.y, molly.transform.position.z + move.y);
         animatorMother = mother.GetComponent<Animator>();
         animatorMother.SetBool("Idling", false);
     }
@@ -32,6 +31,12 @@ public class WalkIn : MonoBehaviour
         if (mother.transform.position.Equals(goalMother))
         {
             animatorMother.SetBool("Idling", true);
+            GameState.finishedWalkIn = true;
+        }
+        if (GameState.finishedWalkIn)
+        {
+            enabled = false;
+            GetComponent<MollySits>().enabled = true;
         }
     }
 }
