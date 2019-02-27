@@ -7199,6 +7199,10 @@ MonoBehaviour:
   molly: {fileID: 836567619}
   goal: {x: 3.486, y: -0.062, z: 1.612}
   speed: 1
+  keywords:
+  - Hello
+  - Hi
+  - Welcome
 --- !u!1 &1746737325 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6020696291586456280, guid: 7944339f03dfc5548a4c94b1f5e96191,
