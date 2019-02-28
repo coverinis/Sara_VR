@@ -5,11 +5,6 @@ using UnityEngine.Windows.Speech;
 
 public class Dictation : MonoBehaviour
 {
-    [SerializeField]
-    private Text m_Hypotheses;
-
-    [SerializeField]
-    private Text m_Recognitions;
 
     private DictationRecognizer m_DictationRecognizer;
 
@@ -20,19 +15,22 @@ public class Dictation : MonoBehaviour
         m_DictationRecognizer.DictationResult += (text, confidence) =>
         {
             Debug.LogFormat("Dictation result: {0}", text);
-            m_Recognitions.text += text + "\n";
         };
 
         m_DictationRecognizer.DictationHypothesis += (text) =>
         {
-            Debug.LogFormat("Dictation hypothesis: {0}", text);
-            m_Hypotheses.text += text;
+            //Debug.LogFormat("Dictation hypothesis: {0}", text);
         };
 
         m_DictationRecognizer.DictationComplete += (completionCause) =>
         {
             if (completionCause != DictationCompletionCause.Complete)
+            {
                 Debug.LogErrorFormat("Dictation completed unsuccessfully: {0}.", completionCause);
+                Debug.Log("Restart Dicatation");
+                m_DictationRecognizer.Start();
+            }
+                
         };
 
         m_DictationRecognizer.DictationError += (error, hresult) =>

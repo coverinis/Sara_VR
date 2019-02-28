@@ -11,7 +11,7 @@ public class MollySits : MonoBehaviour
     public Vector3 goal;
     public float speed;
 
-    KeywordRecognizer recognizer;
+    //KeywordRecognizer recognizer;
 
     [SerializeField]
     string[] keywords;
@@ -23,9 +23,9 @@ public class MollySits : MonoBehaviour
         {
             item.gameObject.SetActive(!item.gameObject.activeSelf);
         }
-        recognizer = new KeywordRecognizer(keywords);
-        recognizer.OnPhraseRecognized += OnPhraseRecognized;
-        recognizer.Start();
+        //recognizer = new KeywordRecognizer(keywords);
+        //recognizer.OnPhraseRecognized += OnPhraseRecognized;
+        //recognizer.Start();
     }
 
     private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
