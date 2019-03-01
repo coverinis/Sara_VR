@@ -15,26 +15,57 @@ public class MollySits : MonoBehaviour
 
     [SerializeField]
     string[] keywords;
+    DictationRecognizer m_DictationRecognizer;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Change Molly
         foreach (Transform item in molly.transform)
         {
             item.gameObject.SetActive(!item.gameObject.activeSelf);
         }
-        //recognizer = new KeywordRecognizer(keywords);
-        //recognizer.OnPhraseRecognized += OnPhraseRecognized;
-        //recognizer.Start();
+
+        //Create Recognizer
+        BuildDictation();
+
+        m_DictationRecognizer.Start();
+
     }
 
-    private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    void BuildDictation()
     {
-        StringBuilder builder = new StringBuilder();
-        builder.AppendFormat("{0} ({1}){2}", args.text, args.confidence, Environment.NewLine);
-        builder.AppendFormat("\tTimestamp: {0}{1}", args.phraseStartTime, Environment.NewLine);
-        builder.AppendFormat("\tDuration: {0} seconds{1}", args.phraseDuration.TotalSeconds, Environment.NewLine);
-        Debug.Log(builder.ToString());
+        //Create Recognizer
+        m_DictationRecognizer = new DictationRecognizer();
+
+        m_DictationRecognizer.DictationResult += (text, confidence) =>
+        {
+            Debug.LogFormat("Dictation result: {0}", text);
+        };
+
+        m_DictationRecognizer.DictationHypothesis += (text) =>
+        {
+            Debug.LogFormat("Dictation hypothesis: {0}", text);
+        };
+
+        m_DictationRecognizer.DictationComplete += (completionCause) =>
+        {
+            if (completionCause != DictationCompletionCause.Complete)
+            {
+                Debug.LogErrorFormat("{0}", completionCause);
+                Debug.Log("Restart Dicatation");
+                m_DictationRecognizer.Stop();
+                m_DictationRecognizer.Dispose();
+                BuildDictation();
+                m_DictationRecognizer.Start();
+            }
+
+        };
+
+        m_DictationRecognizer.DictationError += (error, hresult) =>
+        {
+            Debug.LogErrorFormat("Dictation error: {0}; HResult = {1}.", error, hresult);
+        };
     }
 
     // Update is called once per frame
@@ -49,7 +80,6 @@ public class MollySits : MonoBehaviour
         if (GameState.finishedMollySits)
         {
             enabled = false;
-            //GetComponent<MollySits>().enabled = true;
         }
     }
 }
