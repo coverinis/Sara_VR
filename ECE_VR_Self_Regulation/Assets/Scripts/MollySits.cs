@@ -41,8 +41,8 @@ public class MollySits : MonoBehaviour
                 stringBuilder.Append($"\\b{keywords[i]}");
         }
 
+        //Create REegex
         regex = new Regex(stringBuilder.ToString(),RegexOptions.IgnoreCase);
-        bool test = regex.IsMatch("How is Molly Today");
 
         //Create Recognizer
         speechToText = new SpeechToText(FindKeywords);
