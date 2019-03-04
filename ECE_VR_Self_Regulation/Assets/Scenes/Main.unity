@@ -7134,7 +7134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731644669}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9271a933e161c894ba42ab93e21ff7d0, type: 3}
   m_Name: 
@@ -7148,7 +7148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731644669}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3968b0d1e7dbdb4393412c0db3a48a6, type: 3}
   m_Name: 
@@ -7164,7 +7164,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731644669}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 197a338a580225a4983d133b40ab100a, type: 3}
   m_Name: 
@@ -7176,7 +7176,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731644669}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bd23e8af6ed74a4ab88465405dc967d, type: 3}
   m_Name: 
@@ -7188,6 +7188,10 @@ MonoBehaviour:
   - Hello
   - Hi
   - Welcome
+  - How
+  - Molly
+  - Day
+  - Today
 --- !u!1 &1746737325 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6020696291586456280, guid: 7944339f03dfc5548a4c94b1f5e96191,

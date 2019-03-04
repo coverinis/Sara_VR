@@ -8,12 +8,19 @@ public class SpeechToText
 {
     private DictationRecognizer dictationRecognizer;
 
+    public DictationRecognizer DictationRecognizer
+    {
+        get { return dictationRecognizer; }
+    }
+
+    public delegate void FindKeywords(string text);
+
     public SpeechToText()
     {
         BuildDictation();
     }
 
-    public SpeechToText(Func<string,bool> function)
+    public SpeechToText(FindKeywords function)
     {
         BuildDictation(function);
     }
@@ -50,7 +57,13 @@ public class SpeechToText
             {
                 Debug.LogErrorFormat("{0}", completionCause);
                 Debug.Log("Restart Dicatation");
-                dictationRecognizer.Stop();
+                dictationRecognizer.Dispose();
+                BuildDictation();
+                dictationRecognizer.Start();
+            }
+            else
+            {
+                Debug.Log("Restart Dicatation");
                 dictationRecognizer.Dispose();
                 BuildDictation();
                 dictationRecognizer.Start();
@@ -64,7 +77,7 @@ public class SpeechToText
         };
     }
 
-    void BuildDictation(Func<string, bool> function)
+    void BuildDictation(FindKeywords function)
     {
         //Create Recognizer
         dictationRecognizer = new DictationRecognizer();
@@ -86,9 +99,15 @@ public class SpeechToText
             {
                 Debug.LogErrorFormat("{0}", completionCause);
                 Debug.Log("Restart Dicatation");
-                dictationRecognizer.Stop();
                 dictationRecognizer.Dispose();
-                BuildDictation();
+                BuildDictation(function);
+                dictationRecognizer.Start();
+            }
+            else
+            {
+                Debug.Log("Restart Dicatation");
+                dictationRecognizer.Dispose();
+                BuildDictation(function);
                 dictationRecognizer.Start();
             }
 
