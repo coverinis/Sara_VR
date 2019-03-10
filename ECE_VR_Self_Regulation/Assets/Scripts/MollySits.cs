@@ -56,13 +56,14 @@ public class MollySits : MonoBehaviour
     {
         float step = speed * Time.deltaTime;
         molly.transform.position = Vector3.MoveTowards(molly.transform.position, goal, step);
-        if (molly.transform.position.Equals(goal) && false)
+        if (molly.transform.position.Equals(goal))
         {
             GameState.finishedMollySits = true;
         }
         if (GameState.finishedMollySits)
         {
             enabled = false;
+            GetComponent<MotherLeaves>().enabled = true;
         }
     }
 
