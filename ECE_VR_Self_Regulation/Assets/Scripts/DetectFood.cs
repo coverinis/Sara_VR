@@ -6,6 +6,7 @@ public class DetectFood : MonoBehaviour
 {
     public Rigidbody food;
     public float waitTime;
+    public OpenDoor openDoor;
 
     private float collisionTime;
 
@@ -18,7 +19,7 @@ public class DetectFood : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -40,6 +41,7 @@ public class DetectFood : MonoBehaviour
         if (GameState.finishedDetectFood)
         {
             gameObject.SetActive(false);
+            openDoor.enabled = true;
         }
     }
 }

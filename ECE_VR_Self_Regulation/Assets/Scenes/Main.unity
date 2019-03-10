@@ -6008,6 +6008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   food: {fileID: 1647470325}
   waitTime: 4
+  openDoor: {fileID: 1731644671}
 --- !u!64 &1351051877
 MeshCollider:
   m_ObjectHideFlags: 0
