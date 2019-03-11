@@ -9,7 +9,7 @@ public class GameState : MonoBehaviour
     public static bool finishedMotherLeaves;
     public static bool finishedPrepareFood;
     public static bool finishedDetectFood;
-
+    public static bool finishedMoveToRoom;
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +19,6 @@ public class GameState : MonoBehaviour
         finishedMotherLeaves = false;
         finishedPrepareFood = false;
         finishedDetectFood = false;
+        finishedMoveToRoom = false;
     }
 }

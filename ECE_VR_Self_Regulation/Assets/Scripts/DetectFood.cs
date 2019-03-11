@@ -7,6 +7,7 @@ public class DetectFood : MonoBehaviour
     public Rigidbody food;
     public float waitTime;
     public OpenDoor openDoor;
+    public MoveToRoom moveToRoom;
 
     private float collisionTime;
 
@@ -42,6 +43,7 @@ public class DetectFood : MonoBehaviour
         {
             gameObject.SetActive(false);
             openDoor.enabled = true;
+            moveToRoom.enabled = true;
         }
     }
 }
