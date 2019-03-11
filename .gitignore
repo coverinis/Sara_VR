@@ -13,7 +13,7 @@ ExportedObj/
 .consulo/
 *.csproj
 *.unityproj
-*.sln
+ECE_VR_Self_Regulation/*.sln 
 *.suo
 *.tmp
 *.user
