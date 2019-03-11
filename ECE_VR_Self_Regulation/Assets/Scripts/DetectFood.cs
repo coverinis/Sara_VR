@@ -25,7 +25,6 @@ public class DetectFood : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("test");
         if (other.attachedRigidbody.CompareTag("Food"))
         {
             collisionTime += Time.deltaTime;

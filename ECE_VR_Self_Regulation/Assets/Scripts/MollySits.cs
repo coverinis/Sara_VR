@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,10 +20,13 @@ public class MollySits : MonoBehaviour
     SpeechToText speechToText;
     Regex regex;
     string pattern;
+    bool foundKeyoword;
 
     // Start is called before the first frame update
     void Start()
     {
+        foundKeyoword = false;
+
         //Change Molly
         foreach (Transform item in molly.transform)
         {
@@ -42,7 +46,7 @@ public class MollySits : MonoBehaviour
         }
 
         //Create REegex
-        regex = new Regex(stringBuilder.ToString(),RegexOptions.IgnoreCase);
+        regex = new Regex(stringBuilder.ToString(), RegexOptions.IgnoreCase|RegexOptions.Compiled);
 
         //Create Recognizer
         speechToText = new SpeechToText(FindKeywords);
@@ -56,12 +60,13 @@ public class MollySits : MonoBehaviour
     {
         float step = speed * Time.deltaTime;
         molly.transform.position = Vector3.MoveTowards(molly.transform.position, goal, step);
-        if (molly.transform.position.Equals(goal))
+        if (molly.transform.position.Equals(goal) && foundKeyoword)
         {
             GameState.finishedMollySits = true;
         }
         if (GameState.finishedMollySits)
         {
+            speechToText.Stop();
             enabled = false;
             GetComponent<MotherLeaves>().enabled = true;
         }
@@ -75,7 +80,7 @@ public class MollySits : MonoBehaviour
     {
         if (regex.IsMatch(text))
         {
-            Debug.Log("Found keyword");
+            foundKeyoword = true;
         }
     }
 }

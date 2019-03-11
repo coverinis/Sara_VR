@@ -1,27 +1,36 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
 
 public class SpeechToText
 {
     private DictationRecognizer dictationRecognizer;
+    private StringBuilder stringBuilder;
 
     public DictationRecognizer DictationRecognizer
     {
         get { return dictationRecognizer; }
+    }
+    public string Transcript
+    {
+        get { return stringBuilder.ToString(); }
     }
 
     public delegate void FindKeywords(string text);
 
     public SpeechToText()
     {
+        stringBuilder = new StringBuilder();
         BuildDictation();
     }
 
     public SpeechToText(FindKeywords function)
     {
+        stringBuilder = new StringBuilder();
         BuildDictation(function);
     }
 
@@ -40,10 +49,13 @@ public class SpeechToText
     {
         //Create Recognizer
         dictationRecognizer = new DictationRecognizer();
+        dictationRecognizer.InitialSilenceTimeoutSeconds = 86400;
 
         dictationRecognizer.DictationResult += (text, confidence) =>
         {
             Debug.LogFormat("Dictation result: {0}", text);
+            stringBuilder.Append(text);
+            File.AppendAllText(".//Assets//Transcript.txt", text);
         };
 
         dictationRecognizer.DictationHypothesis += (text) =>
@@ -81,10 +93,14 @@ public class SpeechToText
     {
         //Create Recognizer
         dictationRecognizer = new DictationRecognizer();
+        dictationRecognizer.InitialSilenceTimeoutSeconds = 86400;
+
 
         dictationRecognizer.DictationResult += (text, confidence) =>
         {
             Debug.LogFormat("Dictation result: {0}", text);
+            stringBuilder.Append(text);
+            File.AppendAllText(".//Assets//Transcript.txt", text+".");
             function(text);
         };
 
