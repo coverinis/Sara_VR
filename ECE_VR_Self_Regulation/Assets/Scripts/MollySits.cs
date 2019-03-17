@@ -49,7 +49,8 @@ public class MollySits : MonoBehaviour
         regex = new Regex(stringBuilder.ToString(), RegexOptions.IgnoreCase|RegexOptions.Compiled);
 
         //Create Recognizer
-        speechToText = new SpeechToText(FindKeywords);
+        speechToText = new SpeechToText();
+        speechToText.FindKeywordFunction = FindKeywords;
         speechToText.Start();
     }
 
