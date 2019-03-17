@@ -29,6 +29,7 @@ public class SpeechToText
     public SpeechToText()
     {
         stringBuilder = new StringBuilder();
+        FindKeywordFunction = (text) => { Debug.Log(text); };
         BuildDictation();
     }
 
@@ -44,6 +45,18 @@ public class SpeechToText
         dictationRecognizer.Dispose();
     }
 
+    public void WriteToStorage(string text)
+    {
+        var credentials = string.Format("{0}:{1}", "haveridshereseadeeleengi", "fd2bdbfc92a5b128de01d5992e14d4a387231ea0");
+        var url = string.Format("https://{0}@c32ee9af-4fd5-4306-9556-49996adca89b-bluemix.cloudant.com/", credentials);
+
+        using (var client = new MyCouchClient(url, "ecesr"))
+        {
+            //POST with server generated id
+            var test = client.Documents.PostAsync($"{{\"date\":\"{DateTime.Now.ToUniversalTime()}\",\"text\":\"{text}\"}}").Result;
+        }
+    }
+
     void BuildDictation()
     {
         //Create Recognizer
@@ -54,20 +67,9 @@ public class SpeechToText
         dictationRecognizer.DictationResult += (text, confidence) =>
         {
             Debug.LogFormat("Dictation result: {0}", text);
-            stringBuilder.Append(text);
-            File.AppendAllText(".//Assets//Transcript.txt", text + ".");
-
-            var credentials = string.Format("{0}:{1}", "haveridshereseadeeleengi", "fd2bdbfc92a5b128de01d5992e14d4a387231ea0");
-            var url = string.Format("https://{0}@c32ee9af-4fd5-4306-9556-49996adca89b-bluemix.cloudant.com/", credentials);
-
-            using (var client = new MyCouchClient(url, "ecesr"))
-            {
-                //POST with server generated id
-                var test = client.Documents.PostAsync($"{{\"text\":\"{text}\"}}").Result;
-            }
-
+            stringBuilder.Append(text + "\n");
+            Debug.Log(Transcript);//WriteToStorage(Transcript);
             FindKeywordFunction(text);
-            //function(text);
         };
 
         dictationRecognizer.DictationHypothesis += (text) =>

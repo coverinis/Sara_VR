@@ -10,6 +10,7 @@ public class GameState : MonoBehaviour
     public static bool finishedPrepareFood;
     public static bool finishedDetectFood;
     public static bool finishedMoveToRoom;
+    public static SpeechToText speechToText;
 
     // Start is called before the first frame update
     void Start()
@@ -20,5 +21,8 @@ public class GameState : MonoBehaviour
         finishedPrepareFood = false;
         finishedDetectFood = false;
         finishedMoveToRoom = false;
+
+        speechToText = new SpeechToText();
+        speechToText.Start();
     }
 }

@@ -9,15 +9,16 @@ using UnityEngine;
 
 public class MollySits : MonoBehaviour
 {
+    //Public
     public GameObject molly;
     public Vector3 goal;
     public float speed;
 
-    //KeywordRecognizer recognizer;
-
+    //Serialized
     [SerializeField]
     string[] keywords;
-    SpeechToText speechToText;
+
+    //Private
     Regex regex;
     string pattern;
     bool foundKeyoword;
@@ -26,6 +27,10 @@ public class MollySits : MonoBehaviour
     void Start()
     {
         foundKeyoword = false;
+        if (keywords == null)
+        {
+            keywords = new string[0];
+        }
 
         //Change Molly
         foreach (Transform item in molly.transform)
@@ -49,9 +54,7 @@ public class MollySits : MonoBehaviour
         regex = new Regex(stringBuilder.ToString(), RegexOptions.IgnoreCase|RegexOptions.Compiled);
 
         //Create Recognizer
-        speechToText = new SpeechToText();
-        speechToText.FindKeywordFunction = FindKeywords;
-        speechToText.Start();
+        GameState.speechToText.FindKeywordFunction = FindKeywords;
     }
 
     
@@ -67,7 +70,6 @@ public class MollySits : MonoBehaviour
         }
         if (GameState.finishedMollySits)
         {
-            speechToText.Stop();
             enabled = false;
             GetComponent<MotherLeaves>().enabled = true;
         }
