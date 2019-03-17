@@ -7969,9 +7969,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1731644670}
+  - component: {fileID: 1731644674}
+  - component: {fileID: 1731644678}
   - component: {fileID: 1731644671}
   - component: {fileID: 1731644673}
-  - component: {fileID: 1731644674}
   - component: {fileID: 1731644675}
   - component: {fileID: 1731644672}
   - component: {fileID: 1731644676}
@@ -8113,6 +8114,18 @@ MonoBehaviour:
   - {x: 0, y: -90, z: 0}
   - {x: 0, y: 180, z: 0}
   speed: 1
+--- !u!114 &1731644678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731644669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdba5d48b23d5fc4fb8d633638596a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1746737325 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6020696291586456280, guid: 7944339f03dfc5548a4c94b1f5e96191,
