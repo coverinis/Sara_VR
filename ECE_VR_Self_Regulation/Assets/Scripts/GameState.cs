@@ -16,6 +16,8 @@ public class GameState : MonoBehaviour
     public static bool finishedEmpathize;
     public static bool finishedTuckInMolly;
     public static bool finishedMollyStartsToWiggle;
+    public static bool finishedStateEmotion;
+
 
 
     public static SpeechToText speechToText;
@@ -35,6 +37,7 @@ public class GameState : MonoBehaviour
         finishedEmpathize = false;
         finishedTuckInMolly = false;
         finishedMollyStartsToWiggle = false;
+        finishedStateEmotion = false;
 
 
         speechToText = new SpeechToText();
