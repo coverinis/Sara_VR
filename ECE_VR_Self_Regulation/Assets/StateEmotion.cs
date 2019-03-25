@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Transcript : MonoBehaviour
+public class StateEmotion : MonoBehaviour
 {
-    
     // Start is called before the first frame update
     void Start()
     {
