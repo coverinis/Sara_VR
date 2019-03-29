@@ -10,29 +10,40 @@ public class MotherLeaves : MonoBehaviour
     public float speed;
 
     Animator animatorMother;
+    AudioSource audioData;
+    bool firstUpdate;
 
     // Start is called before the first frame update
     void Start()
     {
         animatorMother = mother.GetComponent<Animator>();
-        mother.transform.Rotate(0, 180, 0);
-        animatorMother.SetBool("Idling", false);
+        audioData = mother.GetComponent<AudioSource>();
+        audioData.Play();
+        firstUpdate = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float step = speed * Time.deltaTime;
-        // mother.transform.position = Vector3.MoveTowards(mother.transform.position, goal, step);
-        if (mother.transform.position.z <= goal.z)
+        if (!audioData.isPlaying)
         {
-            GameState.finishedMotherLeaves = true;
-            animatorMother.SetBool("Idling", true);
-        }
-        if (GameState.finishedMotherLeaves)
-        {
-            enabled = false;
-            GetComponent<PrepareFood>().enabled = true;
+            if (firstUpdate)
+            {
+                mother.transform.Rotate(0, 180, 0);
+                animatorMother.SetBool("Idling", false);
+                firstUpdate = false;
+            }
+            float step = speed * Time.deltaTime;
+            if (mother.transform.position.z <= goal.z)
+            {
+                GameState.finishedMotherLeaves = true;
+                animatorMother.SetBool("Idling", true);
+            }
+            if (GameState.finishedMotherLeaves)
+            {
+                enabled = false;
+                GetComponent<PrepareFood>().enabled = true;
+            }
         }
     }
 }

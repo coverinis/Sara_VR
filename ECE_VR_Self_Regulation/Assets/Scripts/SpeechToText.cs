@@ -57,6 +57,18 @@ public class SpeechToText
         }
     }
 
+    public void WriteToStorage()
+    {
+        var credentials = string.Format("{0}:{1}", "haveridshereseadeeleengi", "fd2bdbfc92a5b128de01d5992e14d4a387231ea0");
+        var url = string.Format("https://{0}@c32ee9af-4fd5-4306-9556-49996adca89b-bluemix.cloudant.com/", credentials);
+
+        using (var client = new MyCouchClient(url, "ecesr"))
+        {
+            //POST with server generated id
+            var test = client.Documents.PostAsync($"{{\"date\":\"{DateTime.Now.ToUniversalTime()}\",\"text\":\"{Transcript}\"}}").Result;
+        }
+    }
+
     void BuildDictation()
     {
         //Create Recognizer

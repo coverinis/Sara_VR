@@ -10,6 +10,8 @@ public class DetectFood : MonoBehaviour
     public MoveToRoom moveToRoom;
 
     private float collisionTime;
+    public AudioClip audioClip;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +22,7 @@ public class DetectFood : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnTriggerStay(Collider other)
@@ -31,6 +33,7 @@ public class DetectFood : MonoBehaviour
             if (collisionTime >= waitTime)
             {
                 food.AddForce(-8, 8, 6);
+                audioSource.PlayOneShot(audioClip);
                 GameState.finishedDetectFood = true;
             }
         }
