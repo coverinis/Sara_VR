@@ -13,6 +13,8 @@ public class MollySits : MonoBehaviour
     public GameObject molly;
     public Vector3 goal;
     public float speed;
+    public AudioClip audioClip;
+    public AudioSource audioSource;
 
     //Serialized
     [SerializeField]
@@ -26,6 +28,9 @@ public class MollySits : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Play Hello
+        audioSource.PlayOneShot(audioClip);
+
         foundKeyoword = false;
         if (keywords == null)
         {

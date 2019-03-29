@@ -8782,7 +8782,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731644669}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3968b0d1e7dbdb4393412c0db3a48a6, type: 3}
   m_Name: 
@@ -8818,6 +8818,8 @@ MonoBehaviour:
   molly: {fileID: 836567619}
   goal: {x: 3.486, y: -0.062, z: 1.612}
   speed: 1
+  audioClip: {fileID: 8300000, guid: fd9a4275baf63e34b9e764694e3c81a9, type: 3}
+  audioSource: {fileID: 1822015683}
   keywords:
   - Hello
   - Hi

@@ -47,25 +47,27 @@ public class SpeechToText
 
     public void WriteToStorage(string text)
     {
-        var credentials = string.Format("{0}:{1}", "haveridshereseadeeleengi", "fd2bdbfc92a5b128de01d5992e14d4a387231ea0");
+        var credentials = string.Format("{0}:{1}", "sferuspecingingstruithem", "fc655e24802ce39e335b96e4697fd4f48bf4be28");
         var url = string.Format("https://{0}@c32ee9af-4fd5-4306-9556-49996adca89b-bluemix.cloudant.com/", credentials);
 
         using (var client = new MyCouchClient(url, "ecesr"))
         {
             //POST with server generated id
             var test = client.Documents.PostAsync($"{{\"date\":\"{DateTime.Now.ToUniversalTime()}\",\"text\":\"{text}\"}}").Result;
+            Debug.Log(test.Reason);
         }
     }
 
     public void WriteToStorage()
     {
-        var credentials = string.Format("{0}:{1}", "haveridshereseadeeleengi", "fd2bdbfc92a5b128de01d5992e14d4a387231ea0");
+        var credentials = string.Format("{0}:{1}", "sferuspecingingstruithem", "fc655e24802ce39e335b96e4697fd4f48bf4be28");
         var url = string.Format("https://{0}@c32ee9af-4fd5-4306-9556-49996adca89b-bluemix.cloudant.com/", credentials);
 
         using (var client = new MyCouchClient(url, "ecesr"))
         {
             //POST with server generated id
             var test = client.Documents.PostAsync($"{{\"date\":\"{DateTime.Now.ToUniversalTime()}\",\"text\":\"{Transcript}\"}}").Result;
+            Debug.Log(test.Reason);
         }
     }
 
@@ -79,7 +81,7 @@ public class SpeechToText
         dictationRecognizer.DictationResult += (text, confidence) =>
         {
             Debug.LogFormat("Dictation result: {0}", text);
-            stringBuilder.Append(text + "\n");
+            stringBuilder.Append(text + ".");
             Debug.Log(Transcript);//WriteToStorage(Transcript);
             FindKeywordFunction(text);
         };

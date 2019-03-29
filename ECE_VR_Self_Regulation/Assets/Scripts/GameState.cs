@@ -42,5 +42,6 @@ public class GameState : MonoBehaviour
 
         speechToText = new SpeechToText();
         speechToText.Start();
+        GetComponent<WalkIn>().enabled = true;
     }
 }
