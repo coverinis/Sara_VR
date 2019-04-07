@@ -1,0 +1,26 @@
+﻿<Window x:Class="ECE_Text_Analyzer.TextViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ECE_Text_Analyzer"
+        mc:Ignorable="d"
+        Title="TextViewer" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0"
+               x:Name="lb_creationDetail"
+               Content="Created on "
+               FontSize="18" VerticalAlignment="Center" Margin="10,0"/>
+        <TextBox x:Name="tb_text" 
+                 Grid.Row="1" 
+                 Text="text will show here"
+                 FontSize="18"
+                 IsReadOnly="True"
+                 TextWrapping="Wrap"
+                 Margin="10"/>
+    </Grid>
+</Window>
