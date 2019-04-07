@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+* File          :   MyCouchAL.cs
+* Project       :   Capstone - ECE_Text_Analyzer
+* Programmer    :   Gurkirt Singh
+* Date          :   2019-04-07
+* Desc          :   This file holds the class that is an Database Access Layer for other classes
+*/
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using MyCouch;

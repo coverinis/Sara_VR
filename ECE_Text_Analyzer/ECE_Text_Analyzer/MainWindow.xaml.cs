@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+* File          :   MainWindow.xaml.cs
+* Project       :   Capstone - ECE_Text_Analyzer
+* Programmer    :   Gurkirt Singh
+* Date          :   2019-04-07
+* Desc          :   This file has interaction logic for main window
+*/
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
