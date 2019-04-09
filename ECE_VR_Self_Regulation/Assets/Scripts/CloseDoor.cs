@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CloseDoor : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class CloseDoor : MonoBehaviour
         {
             animator.SetTrigger("Close");
             this.gameObject.SetActive(false);
+            GameState.speechToText.WriteToStorage();
+            Application.Quit();
         }
     }
 }

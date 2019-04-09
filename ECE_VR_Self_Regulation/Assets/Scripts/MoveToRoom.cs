@@ -12,7 +12,6 @@ public class MoveToRoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameState.speechToText.WriteToStorage();
         //Change Molly
         foreach (Transform item in molly.transform)
         {
