@@ -47,8 +47,8 @@ public class SpeechToText
 
     public void WriteToStorage(string text)
     {
-        var credentials = string.Format("{0}:{1}", "sferuspecingingstruithem", "fc655e24802ce39e335b96e4697fd4f48bf4be28");
-        var url = string.Format("https://{0}@c32ee9af-4fd5-4306-9556-49996adca89b-bluemix.cloudant.com/", credentials);
+        var credentials = string.Format("{0}:{1}", "iongenetwoughterestimain", "afe6f0c803f5adcf14c3e82ee3690cb222fc1f07");
+        var url = string.Format("https://{0}@c86ec1db-aece-4f27-b8c7-9cae5a827ef5-bluemix.cloudant.com/", credentials);
 
         using (var client = new MyCouchClient(url, "ecesr"))
         {
