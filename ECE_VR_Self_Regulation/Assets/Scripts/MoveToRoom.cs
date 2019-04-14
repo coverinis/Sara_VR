@@ -52,7 +52,6 @@ public class MoveToRoom : MonoBehaviour
                 rotations.RemoveAt(0);
             }
             enabled = false;
-            GetComponent<AskMollyToLieDown>().enabled = true;
         }
     }
 }
